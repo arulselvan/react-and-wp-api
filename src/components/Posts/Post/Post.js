@@ -2,17 +2,21 @@ import React from 'react';
 import './Post.css';
 const post = (props) => {
 
-    let content = null;
-
-    if (props.showContent) {
-        content = props.content
-    } else {
-        content = props.content.substr(0, 120) + '...'
+    const htmlContent={...props.content};
+    //console.log(htmlContent.rendered);
+    //const contentMarkup = {_html:htmlContent.rendered};
+    //console.log(props.content);
+    let createMarkup = (content)=>{
+      
+      let data = {_html:content};
+        console.log(data)
+       return data;
     }
+
     return (
         <div className="Post">
-            <h2> {props.title} </h2>
-            <div> {content}</div>
+            <h1> {props.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: props.content }} />      
         </div>
     )
 }
