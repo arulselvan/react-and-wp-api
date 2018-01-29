@@ -1,0 +1,21 @@
+.Menu{
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.Menu li{
+    list-style: none;
+    padding:10px 0 10px 0;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+
+.Menu li a{
+    text-decoration: none;
+    color:#000;
+}
+
+.Menu li a:hover{
+    text-decoration: none;
+    color:orange;
+}

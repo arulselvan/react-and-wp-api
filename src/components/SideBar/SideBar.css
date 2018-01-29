@@ -1,0 +1,10 @@
+.SideBar{
+    width:20%;
+    float:left;
+    background: #678;
+    height:auto;
+    position:fixed;
+    height:100%;
+    padding-top:4%;
+
+}
