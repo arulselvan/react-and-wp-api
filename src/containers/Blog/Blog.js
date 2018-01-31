@@ -3,6 +3,8 @@ import Aux from '../../hoc/Aux';
 import Posts from '../../components/Posts/Posts';
 import Post from '../../components/Posts/Post/Post';
 import axios from 'axios';
+import * as actions from './../../store/actions'
+import { connect } from 'react-redux';
 
 class Blog extends Component{
 
@@ -11,15 +13,17 @@ class Blog extends Component{
     }
 
     componentDidMount(){
-            axios.get("http://arulselvan.net/wp-json/wp/v2/posts")
+           /* axios.get("http://arulselvan.net/wp-json/wp/v2/posts")
             .then((response)=>{           
                 this.setState({posts:response.data})
-            })
+            })*/
+
+            this.props.getPosts();
     }
 
     
     render(){
-        const posts= this.state.posts.map((post,index)=>{
+        const posts= this.props.posts.map((post,index)=>{
             return <Post key={post.id} title={post.title.rendered} content={post.content.rendered}/>
         });
 
@@ -32,5 +36,16 @@ class Blog extends Component{
     }
 }
 
+const mapStateToProps = state =>{
+    return {
+        posts:state
+    }
+}
 
-export default Blog
+const mapDispatchToProps = dispatch =>{
+    return {
+        getPosts:()=> actions.getPosts()(dispatch)
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Blog)
